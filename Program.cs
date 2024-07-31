@@ -1,5 +1,5 @@
 ﻿using System;
-using MiApp.Model;
+using skeleton.MiApp.model;
 
 namespace MiApp
 {
@@ -7,33 +7,42 @@ namespace MiApp
     {
         static void Main(string[] args)
         {
-            var productRepository = new ProductRepository();
+            var coderSystem = new CoderSystem();
+            bool exit = false;
 
-            var product1 = new Product { Id = 1, Name = "Laptop", Price = 1000m };
-            var product2 = new Product { Id = 2, Name = "Smartphone", Price = 500m };
-
-            productRepository.Create(product1);
-            productRepository.Create(product2);
-
-            var readProduct = productRepository.Read(1);
-            Console.WriteLine($"Producto leído: {readProduct.Name}, Precio: {readProduct.Price}");
-
-            product1.Name = "Gaming Laptop";
-            product1.Price = 1500m;
-            productRepository.Update(product1);
-
-            readProduct = productRepository.Read(1);
-            Console.WriteLine($"Producto actualizado: {readProduct.Name}, Precio: {readProduct.Price}");
-
-            productRepository.Delete(2);
-
-            var deletedProduct = productRepository.Read(2);
-            if (deletedProduct == null)
+            while (!exit)
             {
-                Console.WriteLine("Producto con ID 2 eliminado.");
-            }
+                Console.WriteLine("Seleccione una opción:");
+                Console.WriteLine("1. Crear un nuevo Coder");
+                Console.WriteLine("2. Leer todos los Coders");
+                Console.WriteLine("3. Actualizar un Coder");
+                Console.WriteLine("4. Eliminar un Coder");
+                Console.WriteLine("5. Salir");
 
-            Console.ReadLine();
+                var option = Console.ReadLine();
+
+                switch (option)
+                {
+                    case "1":
+                        coderSystem.Create();
+                        break;
+                    case "2":
+                        coderSystem.Read();
+                        break;
+                    case "3":
+                        coderSystem.Update();
+                        break;
+                    case "4":
+                        coderSystem.Delete();
+                        break;
+                    case "5":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opción no válida. Por favor, intente de nuevo.");
+                        break;
+                }
+            }
         }
     }
 }
