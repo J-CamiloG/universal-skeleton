@@ -7,7 +7,7 @@ namespace skeleton.interfaceCrud
 {
     public interface ICrudSystem
     {
-        public void Create();
+        public void Create( Object nuevoElemento );
         public void Read();
         public void Update();
         public void Delete();

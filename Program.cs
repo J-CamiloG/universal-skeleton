@@ -24,7 +24,8 @@ namespace MiApp
                 switch (option)
                 {
                     case "1":
-                        coderSystem.Create();
+                        var empleado = Coder.PedirInformacion();
+                        coderSystem.Create(empleado);
                         break;
                     case "2":
                         coderSystem.Read();
